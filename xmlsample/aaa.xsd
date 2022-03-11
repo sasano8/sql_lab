@@ -1,0 +1,49 @@
+<!--
+    http://memopad.bitter.jp/w3c/schema/schema_elements_ref.html
+    xs:sequenceは指定した順序でタグが登場する必要がある
+    minOccurs: 最低出現回数 デフォルトは1
+    maxOccurs: 最高出現回数 デフォルトは1
+    <xs:all>
+-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xs:element ref="SQL" />
+    <xs:element name="SQL">
+        <xs:complexType>
+            <xs:element ref="SELECT" />
+            <xs:element ref="INSERT" />
+            <xs:element ref="UPDATE" />
+            <xs:element ref="DELETE" />
+            <xs:element ref="VARS" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SELECT">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:union memberTypes="QUERY RETURNING" />
+                <xs:element ref="UNION" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="QUERY">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="FROM" />
+                <xs:element ref="WHERE" minOccurs="0" />
+                <xs:element ref="JOIN" minOccurs="0" />
+                <xs:element ref="ORDERBY" minOccurs="0" />
+                <xs:element ref="LIMIT" minOccurs="0" />
+                <xs:element ref="OFFSET" minOccurs="0" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="RETURNING">
+        <xs:complexType>
+            <xs:element ref="COLUMN" />
+            <xs:element ref="ALIAS" />
+            <xs:element ref="FUNC" />
+            <xs:element ref="VAL" />
+        </xs:complexType>
+    </xs:element>
+</xsd:schema>

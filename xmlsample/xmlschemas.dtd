@@ -1,0 +1,21 @@
+<!--
+https://www.w3schools.com/xml/xml_dtd_elements.asp
+ : 1つのみ
+*: 0回以上
+?: 0回または1回
++: 最小1回
+EMPTY: 要素は空
+-->
+
+<?xml version="1.0"?>
+<!DOCTYPE SQL [
+    <!ELEMENT SQL ((SELECT,DELETE,COMMIT,ROLLBACK)*,VARS?)>
+    <!ELEMENT SELECT (QUERY,RETURNING?,(UNION|UNIONALL)?)>
+    <!ELEMENT DELETE (QUERY,RETURNING?)>
+    <!ELEMENT QUERY ((FROM|RETURNING),WHERE?,JOIN?,ORDERBY?,LIMIT?,OFFSET?)>
+    <!ELEMENT TABLE EMPTY>
+    <!ELEMENT COLUMN EMPTY>
+    <!ELEMENT VAL EMPTY>
+    <!ELEMENT VAR EMPTY>
+    <!ELEMENT KV EMPTY>
+]>
