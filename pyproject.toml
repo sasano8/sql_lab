@@ -16,6 +16,7 @@ pyparsing = "^3.0.7"
 mo-sql-parsing = "^8.145.22062"
 sqlglot = "^1.26.1"
 psycopg2-binary = "^2.9.3"
+lark = "^1.1.2"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.12.0"
